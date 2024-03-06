@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 function App() {
   const [number,setNumber] = useState(0);
 
-  const someFunction = () => {
+  const someFunction = useCallback(() => {
     console.log(`someFunc: number: ${number}`);
     return;
-  }
+  },[])
 
   useEffect(()=>{
     console.log("someFunction이 변경되었습니다.");
