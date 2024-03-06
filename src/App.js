@@ -1,26 +1,25 @@
 import './App.css';
 import { useCallback, useEffect, useState } from 'react';
+import Box from './Box';
 
 function App() {
-  const [number,setNumber] = useState(0);
-  const [toggle,setToggle] = useState(true);
+  const [size,setSize] = useState(1000);
 
-  const someFunction = useCallback(() => {
-    console.log(`someFunc: number: ${number}`);
-    return;
-  },[number]);
-
-  useEffect(()=>{
-    console.log("someFunction이 변경되었습니다.");
-  },[someFunction])
-
+  const createBoxStyle = () =>{
+    return {
+      backgroundColor: 'pink',
+      width: `${size}px`,
+      height: `${size}px`,
+    };
+  }
+ 
   return (
     <div>
-      <input type="number" value={number}
-      onChange={(e)=> setNumber(parseInt(e.target.value))} />
-      <button onClick={()=>{setToggle(!toggle)}}>{toggle.toString()}</button>
-      <br />
-      <button onClick={someFunction}>Call someFunc</button>
+      <input
+        type='number'
+        value={size}
+        onChange={(e)=>setSize(e.target.value)} />
+        <Box createBoxStyle={createBoxStyle}/>
     </div>
   );
 }
