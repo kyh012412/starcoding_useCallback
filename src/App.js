@@ -8,7 +8,7 @@ function App() {
   const someFunction = useCallback(() => {
     console.log(`someFunc: number: ${number}`);
     return;
-  },[])
+  },[number])
 
   useEffect(()=>{
     console.log("someFunction이 변경되었습니다.");
