@@ -3,17 +3,16 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import Box from './Box';
 
 function App() {
-  const [size,setSize] = useState(1000);
+  const [size,setSize] = useState(100);
   const [isDark,setIsDark] = useState(false);
 
-
-  const createBoxStyle = () =>{
+  const createBoxStyle = useCallback(() =>{
     return {
       backgroundColor: 'pink',
       width: `${size}px`,
       height: `${size}px`,
-    };
-  }
+    }
+  },[size]);
  
   return (
     <div style={{
