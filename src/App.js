@@ -1,9 +1,11 @@
 import './App.css';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Box from './Box';
 
 function App() {
   const [size,setSize] = useState(1000);
+  const [isDark,setIsDark] = useState(false);
+
 
   const createBoxStyle = () =>{
     return {
@@ -14,12 +16,18 @@ function App() {
   }
  
   return (
-    <div>
+    <div style={{
+      background: isDark ? 'black' : 'white',
+    }}>
       <input
         type='number'
         value={size}
-        onChange={(e)=>setSize(e.target.value)} />
-        <Box createBoxStyle={createBoxStyle}/>
+        onChange={(e)=>setSize(e.target.value)}
+      />
+      <button onClick={()=>{
+        setIsDark(!isDark);
+      }}>{isDark?'light':'black'}</button>
+      <Box createBoxStyle={createBoxStyle}/>
     </div>
   );
 }
